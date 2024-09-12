@@ -22,10 +22,8 @@ class PizzaController extends Controller
         ]);
     }
 
-    public function show(int $id)
+    public function show(string $slug)
     {
-        return view('details', [
-            'id' => $id,
-        ]);
+        return view('details');
     }
 }
