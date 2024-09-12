@@ -18,7 +18,7 @@ class Pizza extends Model
         'age',
         'slug',
         'price',
-        'desscription',
+        'description',
         'base',
         'type',
     ];
