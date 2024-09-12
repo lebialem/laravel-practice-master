@@ -1,0 +1,18 @@
+.content {
+    text-align: center;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+.title{
+    font-size: 50px;
+    text-transform: uppercase;
+    border-bottom: 2px solid;
+    text-shadow: 0 0 3px #FF0000;
+    padding: 10px;
+    color: rgb(2, 87, 2);
+    margin-bottom: 20px
+}
