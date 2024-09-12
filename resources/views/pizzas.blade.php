@@ -1,18 +1,13 @@
 <x-layouts.app>
-    <div class="flex-center position-ref full hieght">
+    <div class="flex-center position-ref full height">
         <div class="content">
             <div class="title">
-                {{ __(' pizza list') }}
+                {{ __('Pizza List') }}
             </div>
-
-            <p> {{ $name }} - {{ $age }}</p>
             @foreach ($pizzas as $pizza)
-                <div class="">
-                    {{ $loop->index }} {{ $pizza['type'] }} - {{ $pizza['base'] }}
-                    @if ($loop->first)
-                        <span>{{ __('- first in the loop') }}</span>
-                    @endif
-                </div>
+                <a href="{{ route('pizza.show', $pizza->slug) }}">
+                    {{ $loop->index }} {{ $pizza->type }} - {{ $pizza->base }}
+                </a>
             @endforeach
         </div>
     </div>

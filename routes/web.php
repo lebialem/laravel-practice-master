@@ -7,4 +7,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/pizzas', [PizzaController::class, 'index'])->name('pizza.index');
-Route::get('/pizzas/{id}', [PizzaController::class, 'show'])->name('pizza.show');
+Route::get('/pizzas/{slug}', [PizzaController::class, 'show'])->name('pizza.show');

@@ -17,6 +17,8 @@ return new class extends Migration
         Schema::create('pizzas', function (Blueprint $table) {
             $table->id();
             $table->softDeletes();
+            $table->string('name');
+            $table->string('age');
             $table->string('slug')->unique();
             $table->string('price');
             $table->enum('base', [PizzaBase::asArray()])->default(PizzaBase::CHEESY_CRUST);
