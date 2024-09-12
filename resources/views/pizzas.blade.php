@@ -5,9 +5,11 @@
                 {{ __('Pizza List') }}
             </div>
             @foreach ($pizzas as $pizza)
-                <a href="{{ route('pizza.show', $pizza->slug) }}">
-                    {{ $loop->index }} {{ $pizza->type }} - {{ $pizza->base }}
-                </a>
+                <div>
+                    <a href="{{ route('pizza.show', $pizza->slug) }}">
+                        {{ $loop->index }} - {{ $pizza->type }} - {{ $pizza->base }}
+                    </a>
+                </div>
             @endforeach
         </div>
     </div>
