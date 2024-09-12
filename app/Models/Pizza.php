@@ -4,14 +4,17 @@ namespace App\Models;
 
 use App\Enums\PizzaBase;
 use App\Enums\PizzaType;
+use Spatie\Sluggable\SlugOptions;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Spatie\Sluggable\HasSlug;
 
 class Pizza extends Model
 {
     use HasFactory;
     use SoftDeletes;
+    use HasSlug;
 
     protected $fillable = [
         'name',
@@ -31,4 +34,11 @@ class Pizza extends Model
         'type' => PizzaType::class,
         'price' => 'decimal:2',
     ];
+
+    public function getSlugOptions(): SlugOptions
+    {
+        return SlugOptions::create()
+            ->generateSlugsFrom(['name', 'description'])
+            ->saveSlugsTo('slug');
+    }
 }
