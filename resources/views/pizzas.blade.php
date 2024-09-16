@@ -10,8 +10,8 @@
                     <!-- Link to the show page using the pizza's slug -->
                     <a href="{{ route('pizza.show', $pizza->slug) }}">
                         <!-- Display pizza details with index number, type, and base -->
-                        {{ $loop->iteration }} - {{ ucfirst($pizza->type) }} -
-                        {{ ucfirst(str_replace('_', ' ', $pizza->base)) }}
+                        {{ $loop->iteration }} - {{ $pizza->type }} -
+                        {{ $pizza->base }}
                     </a>
                 </div>
             @endforeach

@@ -10,6 +10,6 @@ class PizzaSeeder extends Seeder
     public function run(): void
     {
         // Generate 10 random pizza records
-        Pizza::factory()->count(10)->create();
+        Pizza::factory()->count(25)->create();
     }
 }

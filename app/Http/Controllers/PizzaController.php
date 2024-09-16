@@ -2,21 +2,38 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Models\Pizza;
+use App\Models\PizzaModule;
 
 class PizzaController extends Controller
 {
-    public function index(Request $request)
+    /**
+     * Display a listing of all pizzas.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function index(): \Illuminate\View\View
     {
-        $pizzas = Pizza::all();
+        $pizzas = Pizza::paginate(10);
         return view('pizzas', ['pizzas' => $pizzas]);
     }
 
+    /**
+     * Display the details of a specific pizza.
+     *
+     * @param  string  $slug
+     * @return \Illuminate\View\View|\Illuminate\Http\Response
+     */
     public function show(string $slug)
     {
-        $pizza = Pizza::where('slug', $slug)->firstOrFail();
-        return view('details', ['pizza' => $pizza]);
+        $pizzaModule = PizzaModule::whereHas('pizza', function ($query) use ($slug) {
+            $query->where('slug', $slug);
+        })->with('pizza')->first();
+
+        // if (!$pizzaModule) {
+        //     abort(404, 'Pizza not found');
+        // }
+
+        return view('details', ['pizzaModule' => $pizzaModule]);
     }
 }

@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Pizza;
+use App\Models\User;
 use App\Enums\PizzaBase;
 use App\Enums\PizzaType;
 use Illuminate\Support\Str;
@@ -28,11 +29,12 @@ class PizzaFactory extends Factory
     public function definition()
     {
         return [
+            'user_id' => User::factory(),
             'name' => $this->faker->words(2, true),
             'age' => $this->faker->randomElement(['new', 'classic', 'vintage']),
             'description' => $this->faker->paragraph,
             'slug' => Str::slug($this->faker->unique()->words(3, true)),
-            'price' => $this->faker->randomFloat(2, 5, 50), // random price between 5 and 50
+            'price' => $this->faker->randomFloat(2, 5, 50),
             'base' => $this->faker->randomElement(PizzaBase::asArray()),
             'type' => $this->faker->randomElement(PizzaType::asArray()),
         ];

@@ -21,6 +21,7 @@ return new class extends Migration
             $table->text('description');
             $table->string('slug')->unique();
             $table->decimal('price', 8, 2);
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->enum('base', PizzaBase::asArray())->default(PizzaBase::CHEESY_CRUST);
             $table->enum('type', PizzaType::asArray())->default(PizzaType::HAWAIIAN);
             $table->timestamps();

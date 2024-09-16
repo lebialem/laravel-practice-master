@@ -2,23 +2,24 @@
     <div class="content">
         <div class="title">
             <!-- Pizza Name -->
-            <h1>{{ $pizza->name }}</h1>
+            <h1>{{ $pizzaModule->pizza->name }}</h1>
         </div>
         <div class="details">
             <!-- Pizza Description -->
-            <p>{{ $pizza->description }}</p>
+            <p>{{ $pizzaModule->pizza->description }}</p>
 
             <!-- Pizza Price -->
-            <p><strong>{{ __('Price:') }}</strong> ${{ number_format($pizza->price, 2) }}</p>
+            <p><strong>{{ __('Price:') }}</strong> ${{ number_format($pizzaModule->pizza->price ?? 0, 2) }}</p>
 
             <!-- Pizza Base -->
-            <p><strong>{{ __('Base:') }}</strong> {{ ucfirst(str_replace('_', ' ', $pizza->base)) }}</p>
+            <p><strong>{{ __('Base:') }}</strong>
+                {{ $pizzaModule->pizza->base }}</p>
 
             <!-- Pizza Type -->
-            <p><strong>{{ __('Type:') }}</strong> {{ ucfirst($pizza->type) }}</p>
+            <p><strong>{{ __('Type:') }}</strong> {{ $pizzaModule->pizza->type }}</p>
 
             <!-- Age (new/classic/vintage) -->
-            <p><strong>{{ __('Age:') }}</strong> {{ ucfirst($pizza->age) }}</p>
+            <p><strong>{{ __('Age:') }}</strong> {{ $pizzaModule->pizza->age }}</p>
         </div>
     </div>
 </x-layouts.app>
