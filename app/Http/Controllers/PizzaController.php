@@ -22,17 +22,12 @@ class PizzaController extends Controller
      * Display the details of a specific pizza.
      *
      * @param  string  $slug
-     * @return \Illuminate\View\View|\Illuminate\Http\Response
      */
     public function show(string $slug)
     {
         $pizzaModule = PizzaModule::whereHas('pizza', function ($query) use ($slug) {
             $query->where('slug', $slug);
-        })->with('pizza')->first();
-
-        // if (!$pizzaModule) {
-        //     abort(404, 'Pizza not found');
-        // }
+        })->with('pizza')->firstOrFail();
 
         return view('details', ['pizzaModule' => $pizzaModule]);
     }
